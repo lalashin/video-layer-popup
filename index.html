@@ -10,7 +10,7 @@
 </head>
 <body>
     video layer popup close button - 비디오 사운드 꺼지지 않는 오류 없앴음.
-    
+
     <div id="pop">
         <div class="pop_wrap">
            <!--비디오추가-->
@@ -24,7 +24,7 @@
         </div>
         <div id="close" class="pop_close"><img src="img/icon_close.png"></div>
     </div>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script>
 
     $(function(){
@@ -54,11 +54,11 @@
             win_width = _win.width();
 
             if(win_width > 720){
-                $('video')[0].muted = false;
-                $('video')[1].muted = true;
+                $('.video-wrap video')[0].muted = false;
+                $('.video-wrap video')[1].muted = true;
             }else{
-                $('video')[0].muted = true;
-                $('video')[1].muted = false;
+                $('.video-wrap video')[0].muted = true;
+                $('.video-wrap video')[1].muted = false;
             }
         }
   })
