@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이어팝업-jQuery-그냥닫기</title>
+    <link rel="stylesheet" href="css/layerpopup.css">
+
+</head>
+<body>
+    video layer popup close button - 비디오 사운드 꺼지지 않는 오류 없앴음.
+    <div id="pop">
+        <div class="pop_wrap">
+           <!--비디오추가-->
+           <div class="video-wrap">
+            <video src="video/FREE-Sound-Effects-For-VIDEO-EDITING.mp4" muted loop autoplay></video>          
+            
+            <a href="#" class="btn_sound_control off">Sound OFF</a>
+
+        </div>
+           <!--//비디오추가-->
+        </div>
+        <div id="close" class="pop_close"><img src="img/icon_close.png"></div>
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+
+    $(function(){
+        var _win = jQuery(window),
+            win_width = 0;
+
+
+        _win.resize(function(){
+            jQuery('.btn_sound_control').addClass('off').text('Sound OFF');
+            jQuery('.video-wrap video').prop('muted','true');
+        });
+
+        $('.btn_sound_control').click(function(){
+            var _this = jQuery(this);
+
+            if (_this.hasClass('off')) {
+                _this.removeClass('off').text('Sound ON');
+                videoMuted();
+
+            } else {
+                _this.addClass('off').text('Sound OFF');
+                $('.video-wrap video').prop('muted', true);
+            }
+        });
+
+        function videoMuted(){
+            win_width = _win.width();
+
+            if(win_width > 720){
+                $('video')[0].muted = false;
+                $('video')[1].muted = true;
+            }else{
+                $('video')[0].muted = true;
+                $('video')[1].muted = false;
+            }
+        }
+  })
+
+
+  $(document).ready(function() {
+      $('#close').click(function() {
+        $('#pop').hide();
+        $('.video-wrap video').get(0).pause();
+        $('.video-wrap video').get(0).currentTime = 0;     
+      });
+  });
+</script>
+</body>
+</html>
